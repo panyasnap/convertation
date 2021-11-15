@@ -1,25 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import Conversion from "./components/Conversion";
+import {useState} from "react";
+import Newcurrency from "./components/Newcurrency";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [page, setPage] = useState(false)
+    const changePage = () => {
+        setPage(!page)
+    }
+    return (
+        <div className="App container mt-5">
+            {!page ? <Conversion/> : <Newcurrency/>}
+            <button onClick={changePage} className='mt-2 btn-dark'>{!page? 'Свежие валюты' : 'Конвертация валют'}</button>
+        </div>
+    );
 }
 
 export default App;
